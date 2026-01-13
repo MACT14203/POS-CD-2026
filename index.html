@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Órdenes de Café</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b0b0b">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <img class="app-logo" src="assets/logo.png" alt="Logo Café Derrama'o" />
+    <div class="app-title-wrap">
+      <h1 class="app-title">Órdenes de Café</h1>
+      <p class="app-subtitle">Ventas, regalos, PDF y envío por Gmail</p>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="productos" id="productos" aria-label="Productos"></section>
+
+    <aside class="resumen" aria-label="Resumen de orden">
+      <h2>Resumen de Orden</h2>
+      <ul id="resumenLista"></ul>
+
+      <h3>Regalos</h3>
+      <ul id="regalosLista"></ul>
+
+      <p><strong>Total:</strong> $<span id="total">0.00</span></p>
+      <button id="procesarBtn">Procesar Orden</button>
+      <button id="deshacerBtn">Deshacer</button>
+      <button id="resetBtn">Resetear Todo</button>
+      <button id="descargarBtn">Descargar PDF</button>
+      <button id="emailBtn">Enviar por Email</button>
+    </aside>
+  </main>
+
+  <!-- Modal pago -->
+  <div id="metodoPagoModal" class="modal" role="dialog" aria-modal="true" aria-label="Método de pago">
+    <div class="modal-contenido">
+      <h3>Selecciona Método de Pago</h3>
+      <button class="metodoPago" data-metodo="Efectivo">Efectivo</button>
+      <button class="metodoPago" data-metodo="ATH Móvil">ATH Móvil</button>
+
+      <div id="nombreAthInput" style="display:none; margin-top:10px;">
+        <input type="text" id="nombreAth" placeholder="Nombre de quien paga ATH Móvil" class="full-input" />
+        <button id="confirmarAth">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal regalo -->
+  <div id="regaloModal" class="modal" role="dialog" aria-modal="true" aria-label="Registrar regalo">
+    <div class="modal-contenido">
+      <h3>Registrar Producto Regalado</h3>
+      <input type="text" id="nombreRegalo" placeholder="Nombre de la persona" class="full-input" />
+      <select id="productoRegaloSelect" class="full-input"></select>
+      <button id="confirmarRegalo">Registrar Regalo</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
